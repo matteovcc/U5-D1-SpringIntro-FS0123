@@ -17,8 +17,8 @@ public class BeansConfiguration {
 //		return new ProsciuttoDecorator("Prosciutto", 1.0, "prosciutto di parma", p);
 //	}
 
-	@Bean
 	@Primary
+	@Bean
 	public Prodotto pizza() {
 		return new Pizza("Pizza", 5.00, "Base : mozzarella e pomodoro");
 	}

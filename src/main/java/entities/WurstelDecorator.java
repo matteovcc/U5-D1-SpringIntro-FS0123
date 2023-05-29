@@ -11,7 +11,7 @@ public class WurstelDecorator extends ExtraAddictionDecorator {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return prodotto.getName() + "con wurstel";
+		return prodotto.getName() + " con wurstel";
 	}
 
 	@Override

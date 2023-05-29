@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entities.Prodotto;
+import entities.ProsciuttoDecorator;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
@@ -32,16 +33,18 @@ public class D1Application {
 
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(BeansConfiguration.class);
 
-		Prodotto pizzaConProsciuttoGigante = (Prodotto) ctx.getBean("pizzagigante");
-		System.out.println("Prodotto: " + pizzaConProsciuttoGigante.getName() + " prezzo: "
-				+ pizzaConProsciuttoGigante.getPrice());
+		Prodotto pizzaGigante = (Prodotto) ctx.getBean("pizzagigante");
+		System.out.println("Prodotto: " + pizzaGigante.getName() + " prezzo: " + pizzaGigante.getPrice());
 		Prodotto pizzaConProsciutto = (Prodotto) ctx.getBean("prosciutto");
 		System.out.println("Il prodotto: " + pizzaConProsciutto.getName() + "prezzo: " + pizzaConProsciutto.getPrice()
 				+ " info: " + pizzaConProsciutto.getInfo());
 
 		Prodotto wurstel = (Prodotto) ctx.getBean("wurstel");
-		System.out.println(wurstel.getPrice() + wurstel.getName());
+		System.out.println(wurstel.getPrice() + " " + wurstel.getName() + " gusto: " + wurstel.getInfo());
 
+		Prodotto wurstelconprosciutto = new ProsciuttoDecorator("", 0, "", wurstel);
+		log.info(wurstelconprosciutto.getName() + " prezzo :" + wurstelconprosciutto.getPrice() + " info: "
+				+ wurstelconprosciutto.getInfo());
 		ctx.close();
 
 	}
