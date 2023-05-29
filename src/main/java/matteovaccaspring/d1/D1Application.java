@@ -32,12 +32,15 @@ public class D1Application {
 
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(BeansConfiguration.class);
 
-		Prodotto pizzaConProsciuttoGigante = (Prodotto) ctx.getBean("pizzagiganteDecorator");
+		Prodotto pizzaConProsciuttoGigante = (Prodotto) ctx.getBean("pizzagigante");
 		System.out.println("Prodotto: " + pizzaConProsciuttoGigante.getName() + " prezzo: "
 				+ pizzaConProsciuttoGigante.getPrice());
-		Prodotto pizzaConProsciutto = (Prodotto) ctx.getBean("prosciuttoDecorator");
+		Prodotto pizzaConProsciutto = (Prodotto) ctx.getBean("prosciutto");
 		System.out.println("Il prodotto: " + pizzaConProsciutto.getName() + "prezzo: " + pizzaConProsciutto.getPrice()
 				+ " info: " + pizzaConProsciutto.getInfo());
+
+		Prodotto wurstel = (Prodotto) ctx.getBean("wurstel");
+		System.out.println(wurstel.getPrice() + wurstel.getName());
 
 		ctx.close();
 

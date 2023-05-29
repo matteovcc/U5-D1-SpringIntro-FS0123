@@ -8,6 +8,7 @@ import entities.Pizza;
 import entities.PizzaGiganteDecorator;
 import entities.Prodotto;
 import entities.ProsciuttoDecorator;
+import entities.WurstelDecorator;
 
 @Configuration
 public class BeansConfiguration {
@@ -17,19 +18,24 @@ public class BeansConfiguration {
 //	}
 
 	@Bean
+	@Primary
 	public Prodotto pizza() {
 		return new Pizza("Pizza", 5.00, "Base : mozzarella e pomodoro");
 	}
 
-	@Primary
-	@Bean(name = "pizzagiganteDecorator")
-	public Prodotto pizzagiganteDecorator(Prodotto pizza) {
+	@Bean(name = "pizzagigante")
+	public Prodotto pizzagigante(Prodotto pizza) {
 		return new PizzaGiganteDecorator(pizza, "pizza gigante", 1.50, "aggiunta pizza gigante");
 	}
 
-	@Bean(name = "prosciuttoDecorator")
-	public Prodotto prosciuttoDecorator(Prodotto prodotto) {
+	@Bean(name = "prosciutto")
+	public Prodotto prosciutto(Prodotto prodotto) {
 		return new ProsciuttoDecorator("Prosciutto", 1.00, "Aggiunta di prosciutto", prodotto);
+	}
+
+	@Bean(name = "wurstel")
+	public Prodotto wurstel(Prodotto prodotto) {
+		return new WurstelDecorator("Wurstel", 1.30, "Aggiunta di wurstel", prodotto);
 	}
 
 }
